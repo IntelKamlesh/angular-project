@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">Observation Density by Chapter and Severity</h5>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Chapter</th>
+            <th *ngFor="let severity of severities" scope="col">{{ severity }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of heatmapData">
+            <th scope="row">{{ row.chapter }}</th>
+            <td *ngFor="let severity of severities" 
+                [style.background-color]="getCellColor(row[severity])"
+                [style.color]="getTextColor(row[severity])"
+                class="text-center">
+              {{ row[severity] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

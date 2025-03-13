@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">Distribution of Observations by Chapter</h5>
+  </div>
+  <div class="card-body">
+    <div class="chart-container" style="height: 300px;">
+      <canvas baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [type]="barChartType">
+      </canvas>
+    </div>
+  </div>
+</div>

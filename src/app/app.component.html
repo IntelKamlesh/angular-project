@@ -1,0 +1,60 @@
+<div class="container-fluid py-4">
+  <header class="mb-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="h3 mb-0 text-gray-800">{{ title }}</h1>
+      <button class="btn btn-primary" (click)="loadData()">
+        <i class="fas fa-sync-alt mr-1"></i> Refresh Data
+      </button>
+    </div>
+  </header>
+
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <p class="mt-2">Loading audit data...</p>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+  <!-- Dashboard Content -->
+  <div *ngIf="!isLoading && !error">
+    <!-- Filters Section -->
+    <app-filters 
+      [observations]="observations"
+      (filtersChanged)="handleFilterChange($event)">
+    </app-filters>
+
+    <!-- Metrics Cards -->
+    <app-metrics [observations]="filteredObservations"></app-metrics>
+
+    <!-- Charts Row 1 -->
+    <div class="row mb-4">
+      <div class="col-lg-6 mb-4">
+        <app-chapter-distribution [observations]="filteredObservations"></app-chapter-distribution>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <app-status-trend [observations]="filteredObservations"></app-status-trend>
+      </div>
+    </div>
+
+    <!-- Charts Row 2 -->
+    <div class="row mb-4">
+      <div class="col-lg-6 mb-4">
+        <app-chapter-heatmap [observations]="filteredObservations"></app-chapter-heatmap>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <app-chapter-progress [observations]="filteredObservations"></app-chapter-progress>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-5 text-center small text-muted">
+    <p>Audit Management Dashboard © {{ currentYear }}</p>
+  </footer>
+</div>

@@ -1,0 +1,55 @@
+<div class="card mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Filters</h5>
+    <button class="btn btn-sm btn-outline-secondary" (click)="resetFilters()">
+      Reset Filters
+    </button>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="filterForm">
+      <div class="row">
+        <!-- Date Range -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Date Range</label>
+            <div class="d-flex">
+              <div class="input-group mr-2">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">From</span>
+                </div>
+                <input type="date" class="form-control" formControlName="startDate">
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">To</span>
+                </div>
+                <input type="date" class="form-control" formControlName="endDate">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Chapter Selection -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Chapters</label>
+            <select multiple class="form-control" formControlName="selectedChapters">
+              <option *ngFor="let chapter of chapters" [value]="chapter">
+                {{ chapter }}
+              </option>
+            </select>
+            <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple chapters</small>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Show only open observations checkbox -->
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="onlyOpenObservations" id="onlyOpenCheck">
+        <label class="form-check-label" for="onlyOpenCheck">
+          Show only open observations
+        </label>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,121 @@
+<div class="row">
+  <!-- Total Observations Card -->
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+              Total Observations
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{ totalObservationsCount }}
+              <small *ngIf="prevTotalObservationsCount > 0" 
+                    [class.text-success]="isPositiveChange('total', calculateChange(totalObservationsCount, prevTotalObservationsCount))"
+                    [class.text-danger]="!isPositiveChange('total', calculateChange(totalObservationsCount, prevTotalObservationsCount))">
+                {{ calculateChange(totalObservationsCount, prevTotalObservationsCount) >= 0 ? '+' : '' }}
+                {{ calculateChange(totalObservationsCount, prevTotalObservationsCount).toFixed(1) }}%
+              </small>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Open Observations Card -->
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+              Open Observations
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{ openObservationsCount }}
+              <small *ngIf="prevOpenObservationsCount > 0" 
+                    [class.text-success]="isPositiveChange('open', calculateChange(openObservationsCount, prevOpenObservationsCount))"
+                    [class.text-danger]="!isPositiveChange('open', calculateChange(openObservationsCount, prevOpenObservationsCount))">
+                {{ calculateChange(openObservationsCount, prevOpenObservationsCount) >= 0 ? '+' : '' }}
+                {{ calculateChange(openObservationsCount, prevOpenObservationsCount).toFixed(1) }}%
+              </small>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Complied Observations Card -->
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+              Complied Observations
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">
+              {{ compliedObservationsCount }}
+              <small *ngIf="prevCompliedObservationsCount > 0" 
+                    [class.text-success]="isPositiveChange('complied', calculateChange(compliedObservationsCount, prevCompliedObservationsCount))"
+                    [class.text-danger]="!isPositiveChange('complied', calculateChange(compliedObservationsCount, prevCompliedObservationsCount))">
+                {{ calculateChange(compliedObservationsCount, prevCompliedObservationsCount) >= 0 ? '+' : '' }}
+                {{ calculateChange(compliedObservationsCount, prevCompliedObservationsCount).toFixed(1) }}%
+              </small>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compliance Rate Card -->
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+              Compliance Rate
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                  {{ complianceRatePercentage.toFixed(1) }}%
+                  <small *ngIf="prevComplianceRatePercentage > 0" 
+                        [class.text-success]="isPositiveChange('compliance', calculateChange(complianceRatePercentage, prevComplianceRatePercentage))"
+                        [class.text-danger]="!isPositiveChange('compliance', calculateChange(complianceRatePercentage, prevComplianceRatePercentage))">
+                    {{ calculateChange(complianceRatePercentage, prevComplianceRatePercentage) >= 0 ? '+' : '' }}
+                    {{ calculateChange(complianceRatePercentage, prevComplianceRatePercentage).toFixed(1) }}%
+                  </small>
+                </div>
+              </div>
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-info" role="progressbar"
+                      [style.width]="complianceRatePercentage + '%'"
+                      aria-valuenow="complianceRatePercentage" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-clipboard-check fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
